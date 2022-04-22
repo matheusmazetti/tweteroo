@@ -22,8 +22,18 @@ app.post('/tweets', (req, res) => {
 });
 
 app.get('/tweets', (req,res) => {
-    if(tweets.length >= 10){
-        for(let i = tweets.length - 1; i >= 0)
+    if(tweets.length > 10){
+        newest = [];
+        for(let i = tweets.length - 1; i >= 0; i--){
+            if(newest.length == 10){
+                break;
+            } else {
+                newest.push(tweets[i]);
+            }
+        }
+        res.send(newest);
+    } else {
+        res.send(tweets);
     }
 });
 
