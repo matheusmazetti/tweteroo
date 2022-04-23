@@ -16,7 +16,7 @@ app.post('/sign-up', (req, res) => {
         avatar: user.avatar
     };
     if(obj.username === undefined || obj.avatar === undefined || obj.username === '' || obj.avatar === ''){
-        res.sendStatus(400);
+        res.status(400).send('Todos os campos são obrigatórios!');
     } else {
         users.push(obj);
         res.send('OK');
@@ -30,7 +30,7 @@ app.post('/tweets', (req, res) => {
         tweet: tweet.tweet
     };
     if(obj.username === undefined || obj.tweet === undefined || obj.username === '' || obj.tweet === ''){
-        res.sendStatus(400);
+        res.status(400).send('Todos os campos são obrigatórios!');
     } else {
         users.push(obj);
         res.send('OK');
