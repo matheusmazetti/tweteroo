@@ -11,14 +11,30 @@ let newest = [];
 
 app.post('/sign-up', (req, res) => {
     let user = req.body;
-    users.push(user);
-    res.send('OK');
+    let obj = {
+        username: user.username,
+        avatar: user.avatar
+    };
+    if(obj.username === undefined || obj.avatar === undefined || obj.username === '' || obj.avatar === ''){
+        res.sendStatus(400);
+    } else {
+        users.push(obj);
+        res.send('OK');
+    }
 });
 
 app.post('/tweets', (req, res) => {
     let tweet = req.body;
-    tweets.push(tweet);
-    res.send('OK');
+    let obj = {
+        username: tweet.username,
+        tweet: tweet.tweet
+    };
+    if(obj.username === undefined || obj.tweet === undefined || obj.username === '' || obj.tweet === ''){
+        res.sendStatus(400);
+    } else {
+        users.push(obj);
+        res.send('OK');
+    }
 });
 
 app.get('/tweets', (req,res) => {
